@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { rmSync } = require("fs");
 const { Post, Comment, User } = require("../models");
 
 // gets all posts for homepage
@@ -43,3 +44,28 @@ router.get("/post/:id", (req, res) => {
         res.status(500).json(err);
     });
 });
+
+// login
+
+router.get("/login", (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect("/");
+        return;
+    }
+
+    res.render("login");
+});
+
+// signup
+
+
+router.get("/signup", (req, res) => {
+    if(req.sessions.loggedIn) {
+        res.redirect("/");
+        return;
+    }
+
+    res.render("signup");
+});
+
+module.exports = router;
