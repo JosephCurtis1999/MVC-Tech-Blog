@@ -3,10 +3,10 @@ const signupFormHandler = async function (event) {
 
     const usernameEl = document.querySelector('#username-input-signup');
     const passwordEl = document.querySelector('#password-input-signup');
-    fetch("/api/iser", {
+    fetch("/api/user", {
         method: "post",
         body: JSON.stringify({
-            username: usernameEl.ariaValueMax,
+            username: usernameEl.value,
             password: passwordEl.value
         }),
         headers: { "Content-Type": "application/json" }
